@@ -7,6 +7,6 @@ Project Description:  Display snow projections per state, then allowing user to 
 APIs we will use: accuweather  and skyscanner
 
 Breakdown of tasks:
-Irina Montgomery and Eva Anderson(Project manners and Front-end)  
+Irina Montgomery and Eva Anderson(Project managers and Front-end)  
 Ian Theis and Benjamin Andersen (Back-end)
 
