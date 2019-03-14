@@ -8,37 +8,38 @@ body {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-  }
+}
 
 .col-lg-6 {
-  padding-top: 2em;
+    padding-top: 2em;
 }
 
 p {
-  padding-top: 2em;
-  color: white;
+    padding-top: 2em;
+    color: white;
 }
-  .navbar-custom {
+
+.navbar-custom {
     padding-top: 1rem;
     padding-bottom: 1rem;
     background-color: rgba(0, 0, 0, 0.7);
-  }
-  
-  .navbar-custom .navbar-brand {
+}
+
+.navbar-custom .navbar-brand {
     text-transform: uppercase;
     font-size: 1rem;
     letter-spacing: 0.1rem;
     font-weight: 700;
-  }
-  
-  .navbar-custom .navbar-nav .nav-item .nav-link {
+}
+
+.navbar-custom .navbar-nav .nav-item .nav-link {
     text-transform: uppercase;
     font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 0.1rem;
-  }
+}
 
-  /* .img-thumbnail {
+/* .img-thumbnail {
     padding:0;
     background-color: none;
     border: 0;
@@ -47,15 +48,42 @@ p {
     height: auto;
   } */
 
- 
 
-  .row h6 {
+
+.row h6 {
     color: white;
     padding: 2px;
     border-radius: 5px;
-  }
+}
 
-  /* .progress {
+/* .progress {
     margin-top: 1em;
 
   } */
+.section {
+    text-align: center;
+    margin: 0 auto;
+    padding: 10px;
+    background: white;
+    margin: 0 auto;
+    width: 1200px;
+}
+
+.one,
+.two {
+    margin: 10px;
+
+}
+
+.flight-info {
+    padding: 20px;
+    margin: 20px 100px;
+    background: white;
+    text-align: center;
+
+}
+
+.btn {
+    padding: 10px;
+    margin: 10px;
+}
