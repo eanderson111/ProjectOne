@@ -38,21 +38,21 @@ p {
     letter-spacing: 0.1rem;
   }
 
-  /* .img-thumbnail {
+  .img .img-thumbnail {
     padding:0;
     background-color: none;
     border: 0;
     border-radius: 0;
     max-width: 100%;
-    height: auto;
-  } */
+    height: 180px;
+  }
 
- 
 
   .row h6 {
     color: white;
     padding: 2px;
     border-radius: 5px;
+    text-align: center;
   }
 
   /* .progress {
