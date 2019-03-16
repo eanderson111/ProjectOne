@@ -19,10 +19,6 @@ p {
     color: white;
 }
 
-.nnavbar .navbar-dark .bg-dark .static-top{
-    background-color: 'rgb(200, 84, 19)'
-}
-
 .logo {
     width: 50px;
     height: auto;
@@ -31,8 +27,8 @@ p {
 
 
 .img-thumbnail {
-    height: 180px!important;
-  }
+    height: 180px !important;
+}
 
 .row h6 {
     color: white;
@@ -49,21 +45,56 @@ p {
     width: 1200px;
 }
 
+.main {
+    margin: 16px auto 92px auto;
+}
+
+.flight {
+    text-align: center;
+    margin: 0 auto;
+    padding: 10px;
+    background: white;
+    width: 1200px;
+}
+
 .one,
 .two {
     margin: 10px;
 
 }
 
+.flight-stuff {
+    margin-bottom: 20px;
+}
+
 .flight-info {
     padding: 20px;
-    margin: 20px 100px;
+    margin: 0 auto;
     background: white;
     text-align: center;
-
+    width: 1200px;
 }
 
 .btn {
     padding: 10px;
     margin: 10px;
+    background: rgb(200, 84, 19);
+}
+
+h6 {
+    margin: 0 auto;
+    width: 550px;
+    background: rgb(200, 84, 19);
+}
+
+footer {
+    clear: both;
+
+    text-align: center;
+    padding: 25px 25px 25px 25px;
+    width: 100%;
+    margin: 16px auto 92px auto;
+    height: 100%;
+    color: white;
+
 }
