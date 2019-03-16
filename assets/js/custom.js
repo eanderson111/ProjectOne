@@ -1,10 +1,16 @@
-//dark sky - b99ad8277194d0b9b635cf36476edc5c
-//open weather - ea7b88518313d3f084491cee4cc75443
-//myweather2 - 
-// 
+//TODO : Add Daily Refresh Code so call made only once per day
+//TODO : Organization - should this all be within one object
+//TODO : change 'WRITE RESULTS TO HTML' section to integrate with the front end
 
-// https://api.darksky.net/forecast/b99ad8277194d0b9b635cf36476edc5c/40.58884,-111.63798?blocks=minutely
+//Notes : For testing, the ajax call fires off of clicking the button with class button
+// This should be changed in the final version to run at onLoad and check if the ajax calls
+// have already been made within the past day, and the pull the data from firebase if so
 
+//* Important */
+//Notes - DarkSKY API free tier allows for 1000 api calls per day, so be somewhat conservative with 
+//making calls for the resorts array during testing
+
+var count = 0;
 var skiData = {
     resorts: [{
       name: "Breckenridge",
@@ -44,8 +50,6 @@ var skiData = {
     ],
 }
 
-
-
 $('body').on('click', '.button', function() {
 
     var queryURL = "";
@@ -55,35 +59,54 @@ $('body').on('click', '.button', function() {
     var longitude = "";
     var blocks = "?exclude=minutely,currently,hourly,flags";
 
-    //pullResortWrapper();
-    returnResorts();
+    //call pullResortLoop
+    pullResortLoop();
 
-    async function returnResorts () {
-      await pullResortWrapper();
-
-      console.log("HERE I AM");
-      console.log(JSON.stringify(skiData.resorts.sort(sortBySnowTotal)));
-    
-    }
-
-    function sortBySnowTotal(a, b){
-      var aTotal = Number(a.snowTotal);
-      var bTotal = Number(b.snowTotal); 
-      return ((aTotal < bTotal) ? -1 : ((aTotal > bTotal) ? 1 : 0));
-    }
-    
-    async function pullResortWrapper() {
+    // - Loops through the skiData.resorts array, making an API call for each resort
+    // to pull the 7 day snow forecast.
+    function pullResortLoop() {
+      count = 0;
       for (i = 0; i < skiData.resorts.length; i++) {
         pullResortData(i);
       }
       return;
     };
 
+    //object compare funciton used to sort array of objects
+    function sortBySnowTotal(a, b){
+      var aTotal = Number(a.snowTotal);
+      var bTotal = Number(b.snowTotal); 
+      return ((aTotal > bTotal) ? -1 : ((aTotal < bTotal) ? 1 : 0));
+    }
+
+    function mainSnowTotal(count) {
+
+      //only execute after all ajax calls have come in
+      if (count === skiData.resorts.length) {
+        
+        var resortsSorted = skiData.resorts.sort(sortBySnowTotal);
+        var topResorts = resortsSorted.slice(0,3);  //not sure why this is 0,3 instead of 0,2 for top 3, but it is
+
+        //console log results
+        console.log("*All Resorts Sorted*");
+        console.log(JSON.stringify(resortsSorted, null, 2));
+        console.log("*Top Resorts Sorted*");
+        console.log(JSON.stringify(topResorts, null, 2));
+
+        //* WRITE RESULTS TO HTML *
+        for (j = 0; j < topResorts.length; j++) {
+          var $resort = $("<li>");
+          $resort.text(topResorts[j].name+ " - " + topResorts[j].snowTotal);
+          $(".snowForecasts").append($resort);
+        }
+      }
+    }
+
     function pullResortData(i) {
 
       var resort = skiData.resorts[i];  
-      alert("i = " + i + ", name = " + resort.name);
       var queryURL = endpoint + apiKey + resort.latitude + "," + resort.longitude + blocks;
+
       console.log(queryURL);
 
       // Performing an AJAX request with the queryURL
@@ -92,17 +115,16 @@ $('body').on('click', '.button', function() {
         method: "GET",
         dataType: "jsonp"
       })
-        // After data comes back from the request
-        .then(function(response) {       
+        .then(function(response) { 
           
-        // console.log(response);  
-        
         var daily = response.daily.data;
         var snowTotal = 0;
             
-        //loop through 7 day forecast
+        //loop through 7 day forecast and calculate snowTotal for all 7 days
         for (var j = 0; j < daily.length; j++) {
 
+          //for DarkSky API, need to check if any probability of percipitations exists, and
+          //if the type is 'snow' before summing
           if(Number(daily[j].precipProbability) > 0){
             if(daily[j].precipType === "snow") {
               snowTotal += Number(daily[j].precipAccumulation)
@@ -111,17 +133,15 @@ $('body').on('click', '.button', function() {
           }
 
         } //close for loop
+
+        //save snowTotal to resorts array
         resort.snowTotal = snowTotal;
 
-        // console.log("****SKI DATA*******");
-        // console.log(JSON.stringify(skiData));
-        //report snow total
-        // $(".altaButton").html("Snow Total for next 7 days = " + snowTotal.toFixed(2) + '"');
+        //increment the ajax count (used to identify when all ajax calls have returned)
+        count++;
+        mainSnowTotal(count);
 
       }); // close ajax call
-    } //close function
+    } //close pull resort function
 
-      
-
-      
-});
+}); //close on click function
