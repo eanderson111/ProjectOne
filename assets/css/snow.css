@@ -81,15 +81,14 @@ p {
     background: rgb(200, 84, 19);
 }
 
-h6 {
+footer h6 {
     margin: 0 auto;
-    width: 550px;
+    width: 960px;
     background: rgb(200, 84, 19);
 }
 
 footer {
     clear: both;
-
     text-align: center;
     padding: 25px 25px 25px 25px;
     width: 100%;
@@ -98,3 +97,4 @@ footer {
     color: white;
 
 }
+
