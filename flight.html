@@ -43,7 +43,7 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-3">Dates</div>
                 <div class="col-md-3">
-                    <input class="form-control dates" type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
+                    <input class="form-control dates" type="text" name="daterange" value="01/01/2018 - 01/15/2018" id="date-values" />
                 </div>
             </div>
             <button type="button" class="btn btn-info" id="search-flights-button">Search Flights</button>
@@ -69,24 +69,15 @@
                         <thead>
                             <tr>
                                 <th>OutBound Airline</th>
-                                <th>Outbound</th>
+                                <th>Outbound Date</th>
                                 <th>Return Airline</th>
-                                <th>Return</th>
+                                <th>Return Date</th>
                                 <th>Cost</th>
-                                <th> </th>
-                                <th> </th>
+                                <th>Direct </th>
+                                <th>Book</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Delta</td>
-                                <td>03/30/2019</td>
-                                <td>Delta</td>
-                                <td>04/04/2019</td>
-                                <td>$500</td>
-                                <td>Direct Flight</td>
-                                <td><button type="button" class="btn btn-info">Select</button></td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -98,6 +89,7 @@
     </footer>
 
     <script type="text/javascript" src="../ProjectOne/assets/javascript/snow.js"></script>
+    <script src="assets/javascript/flightQuote.js"></script>
 
 </body>
 
