@@ -1,6 +1,9 @@
 // CHART JS
-var ctx = document.getElementById('myChart');
-var chartOne = new Chart(ctx, {
+
+function createChart(element, snowTotal) {
+
+// var ctx = document.getElementById('myChart');
+return new Chart(element, {
     // The type of chart we want to create
     type: 'horizontalBar',
 
@@ -8,13 +11,12 @@ var chartOne = new Chart(ctx, {
     data: {
         // labels: ["Snow"],
         datasets: [{
-            label: "Snowfall",
-            fontColor: 'rgb(255, 255, 255)',
+            label: "Snowfall in inches",
+            fontColor: 'rgb(0, 0, 0)',
             backgroundColor: 'rgb(200, 84, 19)',
             borderColor: 'rgb(200, 84, 19)',
-            data: [6],
+            data: [snowTotal],
         }],
-    
     },
 
     // Configuration options go here
@@ -22,7 +24,7 @@ var chartOne = new Chart(ctx, {
         scales: {
             yAxes: [{
                 ticks: {
-                    fontColor: "white",
+                    fontColor: "black",
                     fontSize: 14,
                     stepSize: 1,
                     beginAtZero:true,
@@ -33,7 +35,7 @@ var chartOne = new Chart(ctx, {
                 min: 0,
                 max: 10,
                 stepSize: 1,
-                fontColor: "white",
+                fontColor: "black",
                 fontSize: 14,
                 stepSize: 1,
                 beginAtZero: true
@@ -43,161 +45,14 @@ var chartOne = new Chart(ctx, {
         legend: {
             display: true,
             labels: {
-                fontColor: 'rgb(255, 255, 255)'
+                fontColor: 'rgb(0, 0, 0)'
         }
      }
     }
 });
-
-var ctx = document.getElementById('myChart-2');
-var chartTwo = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'horizontalBar',
-
-   // The data for our dataset
-   data: {
-    // labels: ["Snow"],
-    datasets: [{
-        label: "Snowfall",
-        fontColor: 'rgb(255, 255, 255)',
-        backgroundColor: 'rgb(200, 84, 19)',
-        borderColor: 'rgb(200, 84, 19)',
-        data: [6],
-    }],
-
-},
-
-// Configuration options go here
-options: {
-    scales: {
-        yAxes: [{
-            ticks: {
-                fontColor: "white",
-                fontSize: 18,
-                stepSize: 1,
-                beginAtZero:true,
-            }
-    }],
-    xAxes: [{
-        ticks: {
-            min: 0,
-            max: 10,
-            stepSize: 1,
-            fontColor: "white",
-            fontSize: 14,
-            stepSize: 1,
-            beginAtZero: true
-        }
-    }]
-},
-    legend: {
-        display: true,
-        labels: {
-            fontColor: 'rgb(255, 255, 255)'
-    }
- }
 }
-});
 
-var ctx = document.getElementById('myChart-3');
-var chartThree = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'horizontalBar',
 
- // The data for our dataset
- data: {
-    // labels: ["Snow"],
-    datasets: [{
-        label: "Snowfall",
-        fontColor: 'rgb(255, 255, 255)',
-        backgroundColor: 'rgb(200, 84, 19)',
-        borderColor: 'rgb(200, 84, 19)',
-        data: [6],
-    }],
-
-},
-
-// Configuration options go here
-options: {
-    scales: {
-        yAxes: [{
-            ticks: {
-                fontColor: "white",
-                fontSize: 18,
-                stepSize: 1,
-                beginAtZero:true,
-            }
-    }],
-    xAxes: [{
-        ticks: {
-            min: 0,
-            max: 10,
-            stepSize: 1,
-            fontColor: "white",
-            fontSize: 14,
-            stepSize: 1,
-            beginAtZero: true
-        }
-    }]
-},
-    legend: {
-        display: true,
-        labels: {
-            fontColor: 'rgb(255, 255, 255)'
-    }
- }
-}
-});
-
-var ctx = document.getElementById('myChart-4');
-var chartFour = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'horizontalBar',
-
-  // The data for our dataset
-  data: {
-    // labels: ["Snow"],
-    datasets: [{
-        label: "Snowfall",
-        fontColor: 'rgb(255, 255, 255)',
-        backgroundColor: 'rgb(200, 84, 19)',
-        borderColor: 'rgb(200, 84, 19)',
-        data: [6],
-    }],
-
-},
-
-// Configuration options go here
-options: {
-    scales: {
-        yAxes: [{
-            ticks: {
-                fontColor: "white",
-                fontSize: 14,
-                stepSize: 1,
-                beginAtZero:true,
-            }
-    }],
-    xAxes: [{
-        ticks: {
-            min: 0,
-            max: 10,
-            stepSize: 1,
-            fontColor: "white",
-            fontSize: 14,
-            stepSize: 1,
-            beginAtZero: true
-        }
-    }]
-},
-    legend: {
-        display: true,
-        labels: {
-            fontColor: 'rgb(255, 255, 255)'
-    }
- }
-}
-});
 
 //TODO : Add Daily Refresh Code so call made only once per day
 //TODO : Organization - should this all be within one object
@@ -254,7 +109,8 @@ var skiData = {
       airportCode: "DEN",
       latitude: 39.186676,
       longitude: -106.81816,
-      snowTotal: 0
+      snowTotal: 0,
+      image:"../ProjectOne/assets/images/breckenridge2.jpg"
     }
     ],
 }
@@ -294,7 +150,7 @@ $('body').on('click', '.button', function() {
       if (count === skiData.resorts.length) {
         
         var resortsSorted = skiData.resorts.sort(sortBySnowTotal);
-        var topResorts = resortsSorted.slice(0,3);  //not sure why this is 0,3 instead of 0,2 for top 3, but it is
+        var topResorts = resortsSorted.slice(0,4);  //not sure why this is 0,3 instead of 0,2 for top 3, but it is
 
         //console log results
         console.log("*All Resorts Sorted*");
@@ -311,39 +167,26 @@ $('body').on('click', '.button', function() {
         //     $(".resortOne").append(resort);
         //   }
 
+        var markup = "";
         for (j = 0; j < topResorts.length; j++) {
-            $("#nameOne").text(topResorts[0].name);
-            $("#nameTwo").text(topResorts[1].name);
-            $("#nameThree").text(topResorts[2].name);
-            $("#nameFour").text(topResorts[3].name);
-          }
+            console.log(`${topResorts[j].image}`);
+            markup += `<div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                 <div class="result">
+                <img src="${topResorts[j].image}" alt="..." class="img-thumbnail">
+                <h6 class="resortName">${topResorts[j].name}</h6>
+                <canvas class="chart" id="myChart${j}" width="100" height="50"></canvas>
+            </div>
+        </div>`            
+          } 
+      } 
+      $("#resortResults").append(markup);
+      for (j = 0; j < topResorts.length; j++) {
+        var ctx = document.getElementById(`myChart${j}`);
+        createChart(ctx, topResorts[j].snowTotal);
       }
     }
- 
-    // .then(function(response) {
-    //     // Storing an array of results in the results variable
-    //     var results = response.data;
-    //     for (var i = 0; i < results.length; i++) {
-    //       var gifDiv = $("<div>");
-    //       var rating = results[i].rating;
-    //       var p = $("<p>").text("Rating: " + rating);
-    //       var personImage = $("<img>");
-    //       personImage.addClass("celebrityImages");
-    //      // var personGif = $("<img>");
-    //       personImage.attr("data-still", results[i].images.fixed_height_still.url);
-    //       personImage.attr("data-animated", results[i].images.fixed_height.url);
-    //       personImage.attr("src",personImage.attr("data-still"));
-    //       gifDiv.append(p);
-    //       gifDiv.append(personImage);
-    //       $("#giph-display").prepend(gifDiv);
-    //     }
-    //   });
 
-    // for (j = 0; j < topResorts.length; j++) {
-    //     var $resort = $("<button>");
-    //     $resort.text(topResorts[j].name+ " - " + topResorts[j].snowTotal);
-    //     $(".resortOne").append($resort);
-    //   }
+ 
 
     function pullResortData(i) {
 
