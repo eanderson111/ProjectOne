@@ -54,6 +54,17 @@ var count = 0;
 //     ],
 // }
 
+var config = {
+  apiKey: "AIzaSyCy8E_5-bgcbj6sveBPO0PRAcVn0kWr_3g",
+  authDomain: "ski-trip-planner.firebaseapp.com",
+  databaseURL: "https://ski-trip-planner.firebaseio.com",
+  projectId: "ski-trip-planner",
+  storageBucket: "ski-trip-planner.appspot.com",
+  messagingSenderId: "431066763908"
+};
+firebase.initializeApp(config);
+var database = firebase.database();
+
 $('body').on('click', '.button', function() {
 
     var queryURL = "";
@@ -140,6 +151,10 @@ $('body').on('click', '.button', function() {
 
         //save snowTotal to resorts array
         resort.snowTotal = snowTotal;
+
+        //add snowTotal to firebase
+        database.ref('resorts/' + resort.name + '/snow').set(snowTotal
+        )
 
         //increment the ajax count (used to identify when all ajax calls have returned)
         count++;
