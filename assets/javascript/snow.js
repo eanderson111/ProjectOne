@@ -134,7 +134,7 @@ var skiData = {
     ],
 }
 
-$('body').on('click', '.button', function() {
+$( document ).ready(function() {
 
 
 
