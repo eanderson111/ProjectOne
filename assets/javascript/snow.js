@@ -67,6 +67,13 @@ return new Chart(element, {
 //making calls for the resorts array during testing
 
 var count = 0;
+var imgArray = [
+  "../ProjectOne/assets/images/breckenridge.jpg",
+  "../ProjectOne/assets/images/keystone.jpg",
+  "../ProjectOne/assets/images/abasin.jpg",
+  "../ProjectOne/assets/images/aspen.jpeg",
+  "../ProjectOne/assets/images/breckenridge2.jpg"
+];
 var skiData = {
     resorts: [{
       name: "Breckenridge",
@@ -116,6 +123,8 @@ var skiData = {
 }
 
 $('body').on('click', '.button', function() {
+
+
 
     var queryURL = "";
     var endpoint = "https://api.darksky.net/forecast/"
@@ -169,10 +178,12 @@ $('body').on('click', '.button', function() {
 
         var markup = "";
         for (j = 0; j < topResorts.length; j++) {
-            console.log(`${topResorts[j].image}`);
+            //console.log(`${topResorts[j].image}`);
+            console.log("**************");
+            console.log(imgArray[j]);
             markup += `<div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                  <div class="result">
-                <img src="${topResorts[j].image}" alt="..." class="img-thumbnail">
+                <img src="${imgArray[j]}" alt="..." class="img-thumbnail" data-airportCode="${topResorts[j].airportCode}">
                 <h6 class="resortName">${topResorts[j].name}</h6>
                 <canvas class="chart" id="myChart${j}" width="100" height="50"></canvas>
             </div>
@@ -231,3 +242,11 @@ $('body').on('click', '.button', function() {
     } //close pull resort function
 
 }); //close on click function
+
+
+
+$('body').on('click', '.img-thumbnail', function() {
+
+  window.location.href = "flight.html?airportCode=" + $(this).data("airportcode");
+
+});
