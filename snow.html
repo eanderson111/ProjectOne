@@ -47,38 +47,7 @@
                     </div>
 
                 <div class="row" id="resortResults">
-                            <!-- <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-
-                                <div class="firstResult">
-                                    <img src="../ProjectOne/assets/images/breckenridge.jpg" alt="..." class="img-thumbnail">
-                                    <h6 id="nameOne"></h6>
-                                        <canvas id="myChart" width="100" height="50"></canvas>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                                <div class="resortTwo">
-                                    <img src="../ProjectOne/assets/images/abasin.jpg" alt="..." class="img-thumbnail">
-                                    <h6 id="nameTwo"></h6>
-                                          <canvas id="myChart-2" width="100" height="50"></canvas>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                                <div class="resortThree">
-                                    <img src="../ProjectOne/assets/images/aspen.jpeg" alt="..." class="img-thumbnail">
-                                    <h6 id="nameThree"></h6>
-                                          <canvas id="myChart-3" width="100" height="50"></canvas>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                                 <div class="nameFour">
-                                    <img src="../ProjectOne/assets/images/keystone.jpg" alt="..." class="img-thumbnail">
-                                    <h6 id="nameFour"></h6>
-                                          <canvas id="myChart-4" width="100" height="50"></canvas>
-                                 </div>
-                            </div> -->
+    
                 </div>
 
                 
@@ -88,6 +57,21 @@
                <footer>
                         <h6>Copyright &copy; 2019 Eva Anderson, Ian Theis, Ben Andersen, Irina Montgomery</h6>
                     </footer>
+                    
+                    
+                    <script>
+
+  x = $('#div-that-increase-height').height()+50; // +20 gives space between div and footer
+  y = $(window).height();    
+  if (x+100<=y){ // 100 is the height of your footer
+    $('#footer').css('top', y-100+'px');// again 100 is the height of your footer
+    $('#footer').css('display', 'block');
+  }else{
+    $('#footer').css('top', x+'px');
+    $('#footer').css('display', 'block');
+  }
+
+                    </script>
 
               <script type="text/javascript" src="../ProjectOne/assets/javascript/snow.js"></script>
        
