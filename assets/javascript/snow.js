@@ -247,12 +247,6 @@ $('body').on('click', '.button', function() {
 
 $('body').on('click', '.img-thumbnail', function() {
 
-  // alert("hi");
-  // alert($(this).data("airportcode"));
-
-  window.location.href = "flight.html?airportCode" + $(this).data("airportcode");
-  //add the image data attribute as query paramter
-
-  //call the flights page
+  window.location.href = "flight.html?airportCode=" + $(this).data("airportcode");
 
 });
