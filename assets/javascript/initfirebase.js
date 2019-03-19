@@ -13,6 +13,8 @@ var config = {
   $(document).on("click", "#update-db", function(){
       console.log("in the on click")
 
+  database.ref().child("lastUpdated").set("2019-03-15");
+  
   for(var i = 0; i < skiData.resorts.length; i++){
       thisResort = skiData.resorts[i]
       console.log(thisResort)
@@ -23,5 +25,16 @@ var config = {
       longitude: thisResort.longitude,
       snow: thisResort.snowTotal
   })
+
+  for(j = 0; j < 4; j++) {
+    database.ref('topResorts').child(j).set({
+      name: "placeholder",
+      state: "placeholder",
+      airport: "placeholder",
+      latitude: "placeholder",
+      longitude: "placeholder",
+      snow: "placeholder"
+    })
+  }
 }
   })
