@@ -1,8 +1,8 @@
 var userSpecifiedOriginAirport = $(".airportcode").val()
 var userSpecifiedOutboundDate
 var userSpecifiedInboundDate
-//dummy value
-var userSpecifiedDestinationAirport = "DEN" 
+var queryString = new URLSearchParams(window.location.search)
+var userSpecifiedDestinationAirport = queryString.get("airportCode")
 
 
 //link to book on skyscanner
@@ -67,7 +67,7 @@ function getCheapestFlight(outDate, inDate ){
                     var thisDirect
                     if (thisOutboundQuote.Direct && thisInboundQuote.Direct) {thisDirect = "Direct"}
                     else {thisDirect = "Indirect"}
-                    var $btn = $('<button>').text("book now").attr('referral', 'http://partners.api.skyscanner.net/apiservices/referral/v1.0/US/USD/en-US/' + userSpecifiedOriginAirport + '/' + userSpecifiedDestinationAirport + '/' + outDate + '/' + inDate + '?apiKey=fc785122bcmshc626804037ac929p15409bjsn43bc860293c8').attr("class", "book-btn")
+                    var $btn = $('<button>').text("book now").attr('referral', 'http://partners.api.skyscanner.net/apiservices/referral/v1.0/US/USD/en-US/' + userSpecifiedOriginAirport + '/' + userSpecifiedDestinationAirport + '/' + outDate + '/' + inDate + '?apiKey=fc785122bcmshc626804037ac929p15409bjsn43bc860293c8').attr("class", "btn-info book-btn")
                     var $row = $("<tr>")
                     var $carrierOut = $("<td>").text(thisOutboundCarrierName)
                     var $carrierIn = $("<td>").text(thisInboundCarrierName)
