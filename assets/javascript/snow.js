@@ -67,24 +67,6 @@ return new Chart(element, {
 //making calls for the resorts array during testing
 
 var count = 0;
-var todaysDate = moment().format("YYYY-MM-DD");
-var config = {
-  apiKey: "AIzaSyCy8E_5-bgcbj6sveBPO0PRAcVn0kWr_3g",
-  authDomain: "ski-trip-planner.firebaseapp.com",
-  databaseURL: "https://ski-trip-planner.firebaseio.com",
-  projectId: "ski-trip-planner",
-  storageBucket: "ski-trip-planner.appspot.com",
-  messagingSenderId: "431066763908"
-};
-firebase.initializeApp(config);
-var database = firebase.database();
-var imgArray = [
-  "../ProjectOne/assets/images/breckenridge.jpg",
-  "../ProjectOne/assets/images/keystone.jpg",
-  "../ProjectOne/assets/images/abasin.jpg",
-  "../ProjectOne/assets/images/aspen.jpeg",
-  "../ProjectOne/assets/images/breckenridge2.jpg"
-];
 var skiData = {
     resorts: [{
       name: "Breckenridge",
@@ -107,7 +89,6 @@ var skiData = {
     {
       name: "Arapahoe Basin",
       state: "CO",
-      airportCode: "DEN",
       latitude: 39.642143,
       longitude: -105.87181,
       snowTotal: 12.01,
@@ -136,8 +117,6 @@ var skiData = {
 
 $('body').on('click', '.button', function() {
 
-
-
     var queryURL = "";
     var endpoint = "https://api.darksky.net/forecast/"
     var apiKey = "b99ad8277194d0b9b635cf36476edc5c/";
@@ -145,25 +124,8 @@ $('body').on('click', '.button', function() {
     var longitude = "";
     var blocks = "?exclude=minutely,currently,hourly,flags";
 
-    //TODO: if lastUpdated <> todays Date, call pullResortLoop
     //call pullResortLoop
-    ///OPTION 1
-    database.ref("lastUpdated").once('value').then(function(snapshot){
-      console.log("before function call");
-      console.log(snapshot.val());
-      if(snapshot.val() === todaysDate) {
-        console.log("in the first one");
-        database.ref("topResorts").once('value').then(function(snapshot){
-          console.log("before function call");
-          console.log(snapshot.val());
-          populateResortImages(snapshot);
-        });
-      } else {
-        console.log("in the second one");
-        pullResortLoop();
-      }
-    });
-    
+    pullResortLoop();
 
     // - Loops through the skiData.resorts array, making an API call for each resort
     // to pull the 7 day snow forecast.
@@ -190,26 +152,6 @@ $('body').on('click', '.button', function() {
         var resortsSorted = skiData.resorts.sort(sortBySnowTotal);
         var topResorts = resortsSorted.slice(0,4);  //not sure why this is 0,3 instead of 0,2 for top 3, but it is
 
-        console.log("Top Resort 0");
-        console.log(JSON.stringify(topResorts[0], null, 2));
-
-
-        //Push topResorts to firebase
-        for(i = 0; i < 4; i++) {
-          console.log(JSON.stringify(topResorts[i], null, 2));
-          var thisResort = database.ref("topResorts/"+i);
-          thisResort.set({
-            name: topResorts[i].name,
-            airport: topResorts[i].airportCode,
-            latitude: topResorts[i].latitude,
-            longitude: topResorts[i].longitude,
-            snow: topResorts[i].snowTotal
-          });
-        }
-
-        //update the updateDate
-        database.ref("lastUpdated").set(todaysDate);
-
         //console log results
         console.log("*All Resorts Sorted*");
         console.log(JSON.stringify(resortsSorted, null, 2));
@@ -217,54 +159,26 @@ $('body').on('click', '.button', function() {
         console.log(JSON.stringify(topResorts, null, 2));
 
         //* WRITE RESULTS TO HTML *
-        // for (j = 0; j < topResorts.length; j++) {
-        //     var resort = $("<div>");
-        //     var resortName = topResorts[j].name;
-        //     var buttonOne = $("<button>").text(resortName);
-        //     resort.append(buttonOne);
-        //     $(".resortOne").append(resort);
-        //   }
 
-        database.ref("topResorts").once('value').then(function(snapshot){
-          console.log("before function call");
-          console.log(snapshot.val());
-          populateResortImages(snapshot);
-        });
-        
-      } 
-      
-    }
-
-
-    //TODO: Make this so that it's reading from firebase
-    function populateResortImages(snapshot) {
-
-      console.log("SNAPSHOT ------------------");
-      console.log(snapshot.val());
-  
-      var markup = "";
-        for (j = 0; j < 4; j++) {
-            //console.log(`${topResorts[j].image}`);
-            console.log("**************");
-            console.log(snapshot.child(j+"/name").val());
-            // console.log(imgArray[j]);
+        var markup = "";
+        for (j = 0; j < topResorts.length; j++) {
+            console.log(`${topResorts[j].image}`);
             markup += `<div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                  <div class="result">
-                <img src="${imgArray[j]}" alt="..." class="img-thumbnail" data-airportCode="${snapshot.child(j+"/airport").val()}">
-                <h6 class="resortName">${snapshot.child(j+"/name").val()}</h6>
+                <img src="${topResorts[j].image}" alt="..." class="img-thumbnail">
+                <h6 class="resortName">${topResorts[j].name}</h6>
                 <canvas class="chart" id="myChart${j}" width="100" height="50"></canvas>
             </div>
         </div>`            
           } 
-
+      } 
       $("#resortResults").append(markup);
-        for (j = 0; j < 4; j++) {
-          var ctx = document.getElementById(`myChart${j}`);
-          createChart(ctx, snapshot.child(j+"/snow").val());
-        }
+      for (j = 0; j < topResorts.length; j++) {
+        var ctx = document.getElementById(`myChart${j}`);
+        createChart(ctx, topResorts[j].snowTotal);
+      }
     }
 
- 
 
     function pullResortData(i) {
 
@@ -309,11 +223,3 @@ $('body').on('click', '.button', function() {
     } //close pull resort function
 
 }); //close on click function
-
-
-
-$('body').on('click', '.img-thumbnail', function() {
-
-  window.location.href = "flight.html?airportCode=" + $(this).data("airportcode");
-
-});
