@@ -26,18 +26,18 @@ return new Chart(element, {
                 ticks: {
                     fontColor: "black",
                     fontSize: 14,
-                    stepSize: 1,
+                    stepSize: 2,
                     beginAtZero:true,
                 }
         }],
         xAxes: [{
             ticks: {
                 min: 0,
-                max: 10,
-                stepSize: 1,
+                max: 20,
+                stepSize: 2,
                 fontColor: "black",
                 fontSize: 14,
-                stepSize: 1,
+                stepSize: 2,
                 beginAtZero: true
             }
         }]
@@ -85,54 +85,54 @@ var imgArray = [
   "../ProjectOne/assets/images/aspen.jpeg",
   "../ProjectOne/assets/images/breckenridge2.jpg"
 ];
-var skiData = {
-    resorts: [{
-      name: "Breckenridge",
-      state: "CO",
-      airportCode: "DEN",
-      latitude: 39.482231,
-      longitude: -106.046181,
-      snowTotal: 7.89,
-      image:"../ProjectOne/assets/images/breckenridge.jpg"
-    },
-    {
-      name: "Keystone",
-      state: "CO",
-      airportCode: "DEN",
-      latitude: 39.60506,
-      longitude: -105.95189,
-      snowTotal: 10.5,
-      image:"../ProjectOne/assets/images/keystone.jpg"
-    },
-    {
-      name: "Arapahoe Basin",
-      state: "CO",
-      airportCode: "DEN",
-      latitude: 39.642143,
-      longitude: -105.87181,
-      snowTotal: 12.01,
-      image:"../ProjectOne/assets/images/abasin.jpg"
-    },
-    {
-      name: "Aspen Highlands",
-      state: "CO",
-      airportCode: "DEN",
-      latitude: 39.18193,
-      longitude: -106.8565,
-      snowTotal: 5.50,
-      image:"../ProjectOne/assets/images/aspen.jpg"
-    },
-    {
-      name: "Aspen Mountain",
-      state: "CO",
-      airportCode: "DEN",
-      latitude: 39.186676,
-      longitude: -106.81816,
-      snowTotal: 0,
-      image:"../ProjectOne/assets/images/breckenridge2.jpg"
-    }
-    ],
-}
+// var skiData = {
+//     resorts: [{
+//       name: "Breckenridge",
+//       state: "CO",
+//       airportCode: "DEN",
+//       latitude: 39.482231,
+//       longitude: -106.046181,
+//       snowTotal: 7.89,
+//       image:"../ProjectOne/assets/images/breckenridge.jpg"
+//     },
+//     {
+//       name: "Keystone",
+//       state: "CO",
+//       airportCode: "DEN",
+//       latitude: 39.60506,
+//       longitude: -105.95189,
+//       snowTotal: 10.5,
+//       image:"../ProjectOne/assets/images/keystone.jpg"
+//     },
+//     {
+//       name: "Arapahoe Basin",
+//       state: "CO",
+//       airportCode: "DEN",
+//       latitude: 39.642143,
+//       longitude: -105.87181,
+//       snowTotal: 12.01,
+//       image:"../ProjectOne/assets/images/abasin.jpg"
+//     },
+//     {
+//       name: "Aspen Highlands",
+//       state: "CO",
+//       airportCode: "DEN",
+//       latitude: 39.18193,
+//       longitude: -106.8565,
+//       snowTotal: 5.50,
+//       image:"../ProjectOne/assets/images/aspen.jpg"
+//     },
+//     {
+//       name: "Aspen Mountain",
+//       state: "CO",
+//       airportCode: "DEN",
+//       latitude: 39.186676,
+//       longitude: -106.81816,
+//       snowTotal: 0,
+//       image:"../ProjectOne/assets/images/breckenridge2.jpg"
+//     }
+//     ],
+// }
 
 $( document ).ready(function() {
 
