@@ -14,9 +14,15 @@ body {
     padding-top: 2em;
 }
 
-p {
+h5 {
+    color: white !important;
     padding-top: 2em;
+}
+
+p {
+    /* padding-top: 2em; */
     color: white;
+    font-size: 20px;
 }
 
 .logo {
