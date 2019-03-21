@@ -13,8 +13,8 @@ return new Chart(element, {
         datasets: [{
             label: "Snowfall in inches",
             fontColor: 'rgb(0, 0, 0)',
-            backgroundColor: 'rgb(200, 84, 19)',
-            borderColor: 'rgb(200, 84, 19)',
+            backgroundColor: 'rgb(10, 16, 22)',
+            borderColor: 'rgb(10, 16, 22)',
             data: [snowTotal],
         }],
     },
@@ -25,7 +25,7 @@ return new Chart(element, {
             yAxes: [{
                 ticks: {
                     fontColor: "black",
-                    fontSize: 14,
+                    fontSize: 12,
                     stepSize: 2,
                     beginAtZero:true,
                 }
@@ -36,7 +36,7 @@ return new Chart(element, {
                 max: 20,
                 stepSize: 2,
                 fontColor: "black",
-                fontSize: 14,
+                fontSize: 12,
                 stepSize: 2,
                 beginAtZero: true
             }

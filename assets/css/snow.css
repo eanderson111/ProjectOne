@@ -15,8 +15,9 @@ body {
 }
 
 h5 {
-    color: white !important;
     padding-top: 2em;
+    color: white !important;
+
 }
 
 p {
@@ -84,7 +85,7 @@ p {
  .btn-info{
     padding: 10px;
     margin: 10px;
-    background: rgb(200, 84, 19);
+    background: rgb(10, 16, 22);
 }
 
 footer h6 {
