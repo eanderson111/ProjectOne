@@ -21,7 +21,9 @@ h5 {
 }
 
 p {
+    /* padding-top: 2em; */
     color: white;
+    font-size: 20px;
 }
 
 .logo {
