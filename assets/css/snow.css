@@ -14,9 +14,16 @@ body {
     padding-top: 2em;
 }
 
-p {
+h5 {
     padding-top: 2em;
+    color: white !important;
+
+}
+
+p {
+    /* padding-top: 2em; */
     color: white;
+    font-size: 20px;
 }
 
 .logo {
@@ -75,29 +82,33 @@ p {
     width: 1200px;
 }
 
-.btn {
+ .btn-info{
     padding: 10px;
     margin: 10px;
-    background: rgb(200, 84, 19);
+    background: rgb(10, 16, 22);
 }
 
 footer h6 {
     margin: 0 auto;
-    width: 550px;
+    width: 960px;
     background: rgb(200, 84, 19);
 }
 
 footer {
     clear: both;
-
     text-align: center;
     padding: 25px 25px 25px 25px;
+    margin: 10px;
     width: 100%;
     margin: 16px auto 92px auto;
     height: 100%;
     color: white;
-
 }
+
+.chart {
+    background:white;
+}
+
 
 @media screen and (max-width: 768px) {
 
@@ -115,3 +126,4 @@ footer {
             width: 100%;
         }
     }
+

@@ -1,29 +1,38 @@
-Resort ,State Code,Latitude,Longitude
-Mammoth,CA,37.630768,-119.032631
-Breckenridge,CO,39.482231,-106.046181
-Keystone Resort,CO,39.60506,-105.95189
-Arapahoe Basin,CO,39.642143,-105.87181
-Aspen Highlands,CO,39.18193,-106.8565
-Aspen Mountain,CO,39.186676,-106.81816
-Beaver Creek,CO,39.0413,-104.99
-Breckenridge,CO,39.4817,-106.038
-Buttermilk,CO,39.4588,-105.411
-Copper Mountain,CO,39.5067,-106.142
-Crested Butte,CO,38.8697,-106.988
-Eldora,CO,39.9486,-105.564
-Keystone,CO,39.5994,-105.987
-Lee's Hill,CO,40.0618,-105.284
-Loveland Basin,CO,38.06582,-108.53676
-Monarch Mountain,CO,39.00027,-105.50083
-Powderhorn Resort,CO,39.0704,-108.151
-Purgatory Resort,CO,39.00027,-105.50083
-Silverton Mountain,CO,39.00027,-105.50083
-Ski Cooper,CO,39.3637,-106.287
-Ski Granby Ranch,CO,39.00027,-105.50083
-Snowmass,CO,39.213,-106.938
-Steamboat,CO,40.4848,-106.832
-Sunlight,CO,39.5959,-106.009
-Telluride,CO,37.9375,-107.812
-Vail,CO,39.6426,-106.386
-Winter Park,CO,39.8916,-105.763
-Wolf Creek,CO,38.9173,-104.766
+name,state,airportCode,latitude,longitude,snowTotal
+Breckenridge,CO,DEN,39.482231,-106.046181,0
+Keystone Resort,CO,DEN,39.60506,-105.95189,0
+Arapahoe Basin,CO,DEN,39.642143,-105.87181,0
+Aspen Highlands,CO,DEN,39.18193,-106.8565,0
+Aspen Mountain,CO,DEN,39.186676,-106.81816,0
+Beaver Creek,CO,DEN,39.0413,-104.99,0
+Breckenridge,CO,DEN,39.4817,-106.038,0
+Buttermilk,CO,DEN,39.4588,-105.411,0
+Copper Mountain,CO,DEN,39.5067,-106.142,0
+Crested Butte,CO,DEN,38.8697,-106.988,0
+Eldora,CO,DEN,39.9486,-105.564,0
+Keystone,CO,DEN,39.5994,-105.987,0
+Lee's Hill,CO,DEN,40.0618,-105.284,0
+Loveland Basin,CO,DEN,38.06582,-108.53676,0
+Monarch Mountain,CO,DEN,39.00027,-105.50083,0
+Powderhorn Resort,CO,DEN,39.0704,-108.151,0
+Purgatory Resort,CO,DEN,39.00027,-105.50083,0
+Silverton Mountain,CO,DEN,39.00027,-105.50083,0
+Ski Cooper,CO,DEN,39.3637,-106.287,0
+Ski Granby Ranch,CO,DEN,39.00027,-105.50083,0
+Snowmass,CO,DEN,39.213,-106.938,0
+Steamboat,CO,DEN,40.4848,-106.832,0
+Sunlight,CO,DEN,39.5959,-106.009,0
+Telluride,CO,DEN,37.9375,-107.812,0
+Vail,CO,DEN,39.6426,-106.386,0
+Winter Park,CO,DEN,39.8916,-105.763,0
+Wolf Creek,CO,DEN,38.9173,-104.766,0
+Alta,UT,SLC,40.588722,-111.63792,0
+Alyeska,AK,ANC,60.9608,-149.1091,0
+Snowbasin,UT,SLC,40.652138,-111.50794,0
+Big Sky,MT,BIL,45.28494,-111.40074,0
+Squaw Valley,CA,FAT,39.16454,-120.23854,0
+Mt. Baker,WA,SEA,48.776799,-121.814468,0
+Mt. Hood,OR,PDX,45.53793,-121.567909,0
+Mammoth,CA,MMH,37.651424,-119.036545,0
+Solitude,UT,SLC,40.588722,-111.63792,0
+Heavenly,CA,FAT,33.7412931,-117.7562051,0

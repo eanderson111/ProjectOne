@@ -11,48 +11,59 @@
 //making calls for the resorts array during testing
 
 var count = 0;
-var skiData = {
-    resorts: [{
-      name: "Breckenridge",
-      state: "CO",
-      airportCode: "DEN",
-      latitude: 39.482231,
-      longitude: -106.046181,
-      snowTotal: 7.89
-    },
-    {
-      name: "Keystone",
-      state: "CO",
-      airportCode: "DEN",
-      latitude: 39.60506,
-      longitude: -105.95189,
-      snowTotal: 10.5
-    },
-    {
-      name: "Arapahoe Basin",
-      state: "CO",
-      latitude: 39.642143,
-      longitude: -105.87181,
-      snowTotal: 12.01
-    },
-    {
-      name: "Aspen Highlands",
-      state: "CO",
-      airportCode: "DEN",
-      latitude: 39.18193,
-      longitude: -106.8565,
-      snowTotal: 5.50
-    },
-    {
-      name: "Aspen Mountain",
-      state: "CO",
-      airportCode: "DEN",
-      latitude: 39.186676,
-      longitude: -106.81816,
-      snowTotal: 0
-    }
-    ],
-}
+// var skiData = {
+//     resorts: [{
+//       name: "Breckenridge",
+//       state: "CO",
+//       airportCode: "DEN",
+//       latitude: 39.482231,
+//       longitude: -106.046181,
+//       snowTotal: 7.89
+//     },
+//     {
+//       name: "Keystone",
+//       state: "CO",
+//       airportCode: "DEN",
+//       latitude: 39.60506,
+//       longitude: -105.95189,
+//       snowTotal: 10.5
+//     },
+//     {
+//       name: "Arapahoe Basin",
+//       state: "CO",
+//       latitude: 39.642143,
+//       longitude: -105.87181,
+//       snowTotal: 12.01
+//     },
+//     {
+//       name: "Aspen Highlands",
+//       state: "CO",
+//       airportCode: "DEN",
+//       latitude: 39.18193,
+//       longitude: -106.8565,
+//       snowTotal: 5.50
+//     },
+//     {
+//       name: "Aspen Mountain",
+//       state: "CO",
+//       airportCode: "DEN",
+//       latitude: 39.186676,
+//       longitude: -106.81816,
+//       snowTotal: 0
+//     }
+//     ],
+// }
+
+var config = {
+  apiKey: "AIzaSyCy8E_5-bgcbj6sveBPO0PRAcVn0kWr_3g",
+  authDomain: "ski-trip-planner.firebaseapp.com",
+  databaseURL: "https://ski-trip-planner.firebaseio.com",
+  projectId: "ski-trip-planner",
+  storageBucket: "ski-trip-planner.appspot.com",
+  messagingSenderId: "431066763908"
+};
+firebase.initializeApp(config);
+var database = firebase.database();
 
 $('body').on('click', '.button', function() {
 
@@ -140,6 +151,10 @@ $('body').on('click', '.button', function() {
 
         //save snowTotal to resorts array
         resort.snowTotal = snowTotal;
+
+        //add snowTotal to firebase
+        database.ref('resorts/' + resort.name + '/snow').set(snowTotal
+        )
 
         //increment the ajax count (used to identify when all ajax calls have returned)
         count++;

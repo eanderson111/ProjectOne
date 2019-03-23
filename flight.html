@@ -28,9 +28,7 @@
         </div>
     </nav>
     <br>
-    <br>
-    <br>
-    <br>
+ 
     <section class="section main">
         <div class="container flight">
             <div class="row one">
@@ -43,19 +41,33 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-3">Dates</div>
                 <div class="col-md-3">
-                    <input class="form-control dates" type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
+                        <input type="text" id="date-values" name="datefilter" value="" />
                 </div>
             </div>
             <button type="button" class="btn btn-info" id="search-flights-button">Search Flights</button>
-            <script>
+           
+            <script type="text/javascript">
                 $(function() {
-                $('input[name="daterange"]').daterangepicker({
-                    opens: 'left'
-                }, function(start, end, label) {
-                    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+                
+                  $('input[name="datefilter"]').daterangepicker({
+                      autoUpdateInput: false,
+                      locale: {
+                          cancelLabel: 'Clear'
+                      }
+                  });
+                
+                  $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
+                      $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+                  });
+                
+                  $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
+                      $(this).val('');
+                  });
+                
                 });
-            });
-        </script>
+                </script>
+           
+        
 
         </div>
 
@@ -69,35 +81,31 @@
                         <thead>
                             <tr>
                                 <th>OutBound Airline</th>
-                                <th>Outbound</th>
+                                <th>Outbound Date</th>
                                 <th>Return Airline</th>
-                                <th>Return</th>
+                                <th>Return Date</th>
                                 <th>Cost</th>
-                                <th> </th>
-                                <th> </th>
+                                <th>Direct </th>
+                                <th>Book</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Delta</td>
-                                <td>03/30/2019</td>
-                                <td>Delta</td>
-                                <td>04/04/2019</td>
-                                <td>$500</td>
-                                <td>Direct Flight</td>
-                                <td><button type="button" class="btn btn-info">Select</button></td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </section>
-    <footer>
-        <h6>Copyright &copy; 2019 Eva Anderson, Ian Theis, Ben Andersen, Irina Montgomery</h6>
-    </footer>
+
+               <!-- Footer -->
+               <footer class="footer">
+                    <div class="bottom">
+                     <p>Copyright &copy; 2019 Eva Anderson, Ian Theis, Ben Andersen, Irina Montgomery</p>
+                     </div> 
+             </footer>
 
     <script type="text/javascript" src="../ProjectOne/assets/javascript/snow.js"></script>
+    <script src="assets/javascript/flightQuote.js"></script>
 
 </body>
 
