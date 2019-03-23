@@ -109,3 +109,21 @@ footer {
     background:white;
 }
 
+
+@media screen and (max-width: 768px) {
+
+    .main,
+    footer {
+        width: 100%;
+    }
+
+    @media screen and (max-width: 640px) {
+
+        .section,
+        .container,
+        .table,
+        footer {
+            width: 100%;
+        }
+    }
+
